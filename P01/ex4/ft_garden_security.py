@@ -2,12 +2,12 @@
 # ########################################################################### #
 #   shebang: 1                                                                #
 #                                                          :::      ::::::::  #
-#   ft_plant_growth.py                                   :+:      :+:    :+:  #
+#   ft_garden_security.py                                :+:      :+:    :+:  #
 #                                                      +:+ +:+         +:+    #
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
-#   Created: 2026/06/13 18:21:45 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 14:39:56 by nda-roch           ###   ########.fr      #
+#   Created: 2026/06/15 14:42:48 by nda-roch            #+#    #+#            #
+#   Updated: 2026/06/15 14:42:55 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -31,18 +31,12 @@ class Plant:
 
 if (__name__ == "__main__"):
 
-    plant1 = Plant("Rose", 25.0, 30)
+    name = ["Rose", "Sunflower", "Cactus", "Sunflower", "Fern"]
+    height = [25, 200, 5, 80, 15]
+    age = [30, 365, 90, 45, 120]
 
-    day = range(1, 8)
-
-    print("=== Garden Plant Growth ===")
-
-    plant1.show()
-
-    for n in day:
-        print(f"=== Day {n} ==")
-        plant1.grow()
-        plant1.age()
-        plant1.show()
-
-    print(f"Growth this week: {plant1.growth}cm")
+    print("=== Plant Factory Output ===")
+    for i in range(5):
+        plant = Plant(name[i], height[i], age[i])
+        print("Created: ", end="")
+        plant.show()

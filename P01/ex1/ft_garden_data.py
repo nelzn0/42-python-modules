@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/13 18:21:21 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/13 18:21:30 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/15 14:39:34 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -21,14 +21,17 @@ class Plant:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
-plant1 = Plant("Rose", 25, 30)
-plant2 = Plant("Sunflower", 80, 45)
-plant3 = Plant("Cactus", 15, 120)
-
-print("=== Garden Plant Registry ===")
-plant1.show()
-plant2.show()
-plant3.show()
-
 if (__name__ == "__main__"):
-    print("=== End of Program ===")
+
+    name = ["Rose", "Sunflower", "Cactus"]
+    height = [25, 80, 45]
+    age = [30, 45, 120]
+
+    plant1 = Plant(name[0], height[0], age[0])
+    plant2 = Plant(name[1], height[1], age[1])
+    plant3 = Plant(name[2], height[2], age[2])
+
+    print("=== Garden Plant Registry ===")
+    plant1.show()
+    plant2.show()
+    plant3.show()
