@@ -7,29 +7,29 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 15:37:19 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 16:48:25 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/15 17:57:08 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 class Plant:
     def __init__(self, name, height, ages):
         self.name = name
-        self.__height = height
-        self.__ages = ages
+        self._height = height
+        self._ages = ages
         self.growth = 0
 
     def get_height(self):
-        return round(self.__height)
+        return round(self._height)
 
     def get_age(self):
-        return self.__ages
+        return self._ages
 
     def set_height(self, height):
         if (height < 0):
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
         else:
-            self.__height = height
+            self._height = height
             print(f"Height updated: {Plant.get_height(self)}cm")
 
     def set_age(self, age):
@@ -37,18 +37,18 @@ class Plant:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self.__ages = age
+            self._ages = age
             print(f"Age updated: {Plant.get_age(self)} days")
 
     def show(self):
-        print(f"{self.name}: {round(self.__height, 2)}cm, {self.__ages} days old")
+        print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
 
     def grow(self, height):
-        self.__height += height
+        self._height += height
         self.nutritional_value += 10
 
     def age(self, ages):
-        self.__ages += ages
+        self._ages += ages
         self.nutritional_value += 10
 
 
@@ -103,16 +103,13 @@ if (__name__ == "__main__"):
     name = ["Rose", "Oak", "Tomato"]
     height = [15.0, 200.0, 5.0]
     age = [10, 365, 10]
-    color = "red"
-    trunk_diameter = 5.0
-    harvest_season = "April"
 
     print("=== Garden Plant Types ===")
 
     print("=== Flower")
 
     for i in range(1):
-        flower = Flower(name[i], height[i], age[i], color)
+        flower = Flower(name[i], height[i], age[i], "red")
         flower.show()
 
     print("[asking the rose to bloom]")
@@ -125,7 +122,7 @@ if (__name__ == "__main__"):
     print("=== Tree")
 
     for i in range(1, 2):
-        tree = Tree(name[i], height[i], age[i], trunk_diameter)
+        tree = Tree(name[i], height[i], age[i], 5.0)
         tree.show()
 
     print("[asking the oak to produce shade]")
@@ -137,7 +134,7 @@ if (__name__ == "__main__"):
     print("=== Vegetable")
 
     for i in range(2, 3):
-        vegetable = Vegetable(name[i], height[i], age[i], harvest_season)
+        vegetable = Vegetable(name[i], height[i], age[i], "April")
         vegetable.show()
 
     print("[make tomato grow and age for 20 days]")
