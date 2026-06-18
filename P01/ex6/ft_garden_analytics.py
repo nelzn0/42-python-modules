@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 16:48:45 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/18 16:32:22 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:32:33 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -25,8 +25,8 @@ class Plant:
 
         def display(self):
             print(f"[statistics for {self._name}]")
-            print(
-                f"Stats: {self._n_grow} grow, {self._n_age} age, {self._n_show} show")
+            print(f"Stats: {self._n_grow} grow, "
+                  f"{self._n_age} age, {self._n_show} show")
 
     def __init__(self, name, height, ages):
         self.name = name
@@ -57,7 +57,8 @@ class Plant:
             print(f"Age updated: {Plant.get_age(self)} days")
 
     def show(self):
-        print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
+        print(f"{self.name}: "
+              f"{round(self._height, 2)}cm, {self._ages} days old")
         self.stat._n_show += 1
 
     def grow(self, height):
@@ -107,8 +108,8 @@ class Tree(Plant):
 
         def display(self):
             print(f"[statistics for {self._name}]")
-            print(
-                f"Stats: {self._n_grow} grow, {self._n_age} age, {self._n_show} show")
+            print(f"Stats: {self._n_grow}"
+                  f" grow, {self._n_age} age, {self._n_show} show")
             print(f"{self._n_shade} shade")
 
     def __init__(self, name, height, ages, trunk_diameter):
@@ -123,8 +124,8 @@ class Tree(Plant):
 
     def produce_shade(self):
         self.shade += 200.0
-        print(
-            f"Tree {self.name} now produces a shade of {self.shade}cm long and {self.trunk_diameter}cm wide.")
+        print(f"Tree {self.name} now produces a shade of"
+              f" {self.shade}cm long and {self.trunk_diameter}cm wide.")
         self.stat._n_shade += 1
 
 

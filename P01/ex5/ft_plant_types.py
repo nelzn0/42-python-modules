@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 15:37:19 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/18 17:23:26 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:28:24 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -40,7 +40,8 @@ class Plant:
             print(f"Age updated: {Plant.get_age(self)} days")
 
     def show(self):
-        print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
+        print(f"{self.name}: "
+              f"{round(self._height, 2)}cm, {self._ages} days old")
 
     def grow(self, height):
         self._height += height
@@ -58,7 +59,7 @@ class Flower(Plant):
     def show(self):
         super().show()
         print(f"Color: {self.color}")
-        if (self.blo == False):
+        if (self.blo is False):
             print(f"{self.name} has not bloomed yet")
         else:
             print(f"{self.name} is blooming beautifully!")
@@ -80,7 +81,8 @@ class Tree(Plant):
     def produce_shade(self):
         self.shade += 200.0
         print(
-            f"Tree {self.name} now produces a shade of {self.shade}cm long and {self.trunk_diameter}cm wide.")
+            f"Tree {self.name} now produces a shade of "
+            f"{self.shade}cm long and {self.trunk_diameter}cm wide.")
 
 
 class Vegetable(Plant):

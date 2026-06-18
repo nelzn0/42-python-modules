@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 14:42:48 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/18 17:22:58 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:26:38 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -40,7 +40,8 @@ class Plant:
             print(f"Age updated: {Plant.get_age(self)} days")
 
     def show(self):
-        print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
+        print(f"{self.name}: "
+              f"{round(self._height, 2)}cm, {self._ages} days old")
 
 
 if (__name__ == "__main__"):
