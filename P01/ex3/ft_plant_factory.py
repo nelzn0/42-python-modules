@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 14:04:43 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 15:55:58 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:21:14 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -16,17 +16,9 @@ class Plant:
         self.name = name
         self.height = height
         self.ages = ages
-        self.growth = 0
 
     def show(self):
         print(f"{self.name}: {round(self.height, 2)}cm, {self.ages} days old")
-
-    def grow(self):
-        self.height += 0.8
-        self.growth += 0.8
-
-    def age(self):
-        self.ages += 1
 
 
 if (__name__ == "__main__"):

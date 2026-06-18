@@ -7,21 +7,18 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 14:42:48 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 18:28:58 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:22:58 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 class Plant:
     def __init__(self, name, height, ages):
         self.name = name
-        self._height = 0
-        self.set_height(height)
-        self._ages = 0
-        self.set_age(ages)
-        self.growth = 0
+        self._height = height
+        self._ages = ages
 
     def get_height(self):
-        return round(self._height, 2)
+        return round(self._height)
 
     def get_age(self):
         return self._ages
@@ -44,13 +41,6 @@ class Plant:
 
     def show(self):
         print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
-
-    def grow(self):
-        self._height += 0.8
-        self.growth += 0.8
-
-    def age(self):
-        self._ages += 1
 
 
 if (__name__ == "__main__"):

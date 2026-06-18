@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/13 18:21:21 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 14:39:34 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 16:36:26 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -35,3 +35,4 @@ if (__name__ == "__main__"):
     plant1.show()
     plant2.show()
     plant3.show()
+    print("=== End of Program ===")

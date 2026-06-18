@@ -7,19 +7,32 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 16:48:45 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 18:17:04 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 16:32:22 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
+def display_stats(plant):
+    plant.stat.display()
+
+
 class Plant:
+    class Stats:
+        def __init__(self, name):
+            self._name = name
+            self._n_age = 0
+            self._n_grow = 0
+            self._n_show = 0
+
+        def display(self):
+            print(f"[statistics for {self._name}]")
+            print(
+                f"Stats: {self._n_grow} grow, {self._n_age} age, {self._n_show} show")
+
     def __init__(self, name, height, ages):
         self.name = name
         self._height = height
         self._ages = ages
-        self.growth = 0
-        self._n_age = 0
-        self._n_grow = 0
-        self._n_show = 0
+        self.stat = Plant.Stats(self.name)
 
     def get_height(self):
         return round(self._height)
@@ -32,7 +45,7 @@ class Plant:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
         else:
-            self.__height = height
+            self._height = height
             print(f"Height updated: {Plant.get_height(self)}cm")
 
     def set_age(self, age):
@@ -40,25 +53,20 @@ class Plant:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self.__ages = age
+            self._ages = age
             print(f"Age updated: {Plant.get_age(self)} days")
 
     def show(self):
         print(f"{self.name}: {round(self._height, 2)}cm, {self._ages} days old")
-        self._n_show += 1
+        self.stat._n_show += 1
 
     def grow(self, height):
         self._height += height
-        self._n_grow += 1
+        self.stat._n_grow += 1
 
     def age(self, ages):
         self._ages += ages
-        self._n_age += 1
-
-    def stats(self):
-        print(f"[statistics for {self.name}]")
-        print(
-            f"Stats: {self._n_grow} grow, {self._n_age} age, {self._n_show} show")
+        self.stat._n_age += 1
 
     @staticmethod
     def more_than_year(ages):
@@ -82,21 +90,32 @@ class Flower(Plant):
     def show(self):
         super().show()
         print(f"Color: {self.color}")
-        if (self.blo == False):
+        if (self.blo is False):
             print(f"{self.name} has not bloomed yet")
         else:
             print(f"{self.name} is blooming beautifully!")
 
-    def bloom(self, blo):
-        self.blo = blo
+    def bloom(self):
+        self.blo = True
 
 
 class Tree(Plant):
+    class Stats(Plant.Stats):
+        def __init__(self, name):
+            super().__init__(name)
+            self._n_shade = 0
+
+        def display(self):
+            print(f"[statistics for {self._name}]")
+            print(
+                f"Stats: {self._n_grow} grow, {self._n_age} age, {self._n_show} show")
+            print(f"{self._n_shade} shade")
+
     def __init__(self, name, height, ages, trunk_diameter):
         super().__init__(name, height, ages)
         self.trunk_diameter = trunk_diameter
         self.shade = 0
-        self.__n_shade = 0
+        self.stat = Tree.Stats(self.name)
 
     def show(self):
         super().show()
@@ -106,11 +125,7 @@ class Tree(Plant):
         self.shade += 200.0
         print(
             f"Tree {self.name} now produces a shade of {self.shade}cm long and {self.trunk_diameter}cm wide.")
-        self.__n_shade += 1
-
-    def stats(self):
-        super().stats()
-        print(f"{self.__n_shade} shade")
+        self.stat._n_shade += 1
 
 
 class Seed(Flower):
@@ -122,10 +137,9 @@ class Seed(Flower):
         super().show()
         print(f"Seeds: {self.seeds}")
 
-    def bloom(self, blo):
-        super().bloom(blo)
-        if (blo == True):
-            self.seeds += 42
+    def bloom(self):
+        super().bloom()
+        self.seeds += 42
 
 
 if (__name__ == "__main__"):
@@ -151,15 +165,15 @@ if (__name__ == "__main__"):
         flower = Flower(name[i], height[i], age[i], "red")
         flower.show()
 
-    flower.stats()
+    display_stats(flower)
 
     print("[asking the rose to grow and bloom]")
 
     flower.grow(8)
-    flower.bloom(True)
+    flower.bloom()
     flower.show()
 
-    flower.stats()
+    display_stats(flower)
 
     print("")
 
@@ -169,13 +183,13 @@ if (__name__ == "__main__"):
         tree = Tree(name[i], height[i], age[i], 5.0)
         tree.show()
 
-    tree.stats()
+    display_stats(tree)
 
     print("[asking the oak to produce shade]")
 
     tree.produce_shade()
 
-    tree.stats()
+    display_stats(tree)
 
     print("")
 
@@ -189,13 +203,13 @@ if (__name__ == "__main__"):
 
     seed.grow(30)
     seed.age(20)
-    seed.bloom(True)
+    seed.bloom()
     seed.show()
-    seed.stats()
+    display_stats(seed)
 
     print("")
 
     print("=== Anonymous")
     anon = Plant.anonymous()
     anon.show()
-    anon.stats()
+    display_stats(anon)

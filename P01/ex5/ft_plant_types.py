@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/15 15:37:19 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/15 17:57:08 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/18 17:23:26 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -16,7 +16,6 @@ class Plant:
         self.name = name
         self._height = height
         self._ages = ages
-        self.growth = 0
 
     def get_height(self):
         return round(self._height)
@@ -45,11 +44,9 @@ class Plant:
 
     def grow(self, height):
         self._height += height
-        self.nutritional_value += 10
 
     def age(self, ages):
         self._ages += ages
-        self.nutritional_value += 10
 
 
 class Flower(Plant):
@@ -66,8 +63,8 @@ class Flower(Plant):
         else:
             print(f"{self.name} is blooming beautifully!")
 
-    def bloom(self, blo):
-        self.blo = blo
+    def bloom(self):
+        self.blo = True
 
 
 class Tree(Plant):
@@ -97,6 +94,14 @@ class Vegetable(Plant):
         print(f"Harvest season: {self.harvest_season}")
         print(f"Nutritional value: {self.nutritional_value}")
 
+    def grow(self, height):
+        super().grow(height)
+        self.nutritional_value += 10
+
+    def age(self, age):
+        super().age(age)
+        self.nutritional_value += 10
+
 
 if (__name__ == "__main__"):
 
@@ -114,7 +119,7 @@ if (__name__ == "__main__"):
 
     print("[asking the rose to bloom]")
 
-    flower.bloom(True)
+    flower.bloom()
     flower.show()
 
     print("")
