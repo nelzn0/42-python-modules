@@ -7,46 +7,55 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/23 12:58:53 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/23 13:31:56 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/25 13:46:34 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 class GardenError(Exception):
-    def __init__(self, message="Unknown plant error"):
+    def __init__(self, message="Unknown garden error") -> None:
         super().__init__(message)
         self.message = message
 
 
 class PlantError(GardenError):
-    def __init__(self, message="The tomato plant is wilting!"):
+    def __init__(self, message="Unknown plant error") -> None:
         super().__init__(message)
 
 
 class WaterError(GardenError):
-    def __init__(self, message="Not enough water in the tank!"):
+    def __init__(self, message="Unknown water error") -> None:
         super().__init__(message)
 
 
-def test_plants():
+def check_plant(plant: str) -> None:
+    raise PlantError("The tomato plant is wilting!")
+
+
+def check_water(water: int) -> None:
+    if (water < 10):
+        raise WaterError("Not enough water in the tank!")
+
+
+def test_plants() -> None:
     try:
         print("Testing PlantError...")
-        raise PlantError
+        check_plant("tomato")
     except PlantError as e:
         print(f"Caught {e.__class__.__name__}: {e}")
         print("")
     try:
         print("Testing WaterError...")
-        raise WaterError
+        check_water(5)
     except WaterError as e:
         print(f"Caught {e.__class__.__name__}: {e}")
         print("")
     try:
         print("Testing catching all garden errors...")
-        raise PlantError
+        check_plant("tomato")
     except GardenError as e:
         print(f"Caught GardenError: {e}")
     try:
-        raise WaterError
+        check_water(5)
     except GardenError as e:
         print(f"Caught GardenError: {e}")
     print("")
