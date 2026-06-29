@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/28 16:41:04 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/28 17:26:31 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/06/29 18:15:12 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -28,8 +28,8 @@ def open_file() -> str:
         print(f"File '{sys.argv[1]}' closed.")
         return output
     except Exception as e:
-        print(
-            f"[STDERR] Error opening file '{sys.argv[1]}': {e}", file=sys.stderr)
+        print(f"[STDERR] Error opening file "
+              f" '{sys.argv[1]}': {e}", file=sys.stderr)
         return ""
 
 
