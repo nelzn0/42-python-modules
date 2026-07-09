@@ -7,6 +7,20 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:02:41 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 15:02:41 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 18:40:09 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
+
+from .dark_spellbook import dark_spell_allowed_ingredients
+
+
+def validate_dark_ingredients(ingredients: str) -> str:
+    valid = dark_spell_allowed_ingredients()
+    status = False
+    for item in valid:
+        if item in ingredients.lower():
+            status = True
+    if status:
+        return f"{ingredients} - VALID"
+    else:
+        return f"{ingredients} - INVALID"

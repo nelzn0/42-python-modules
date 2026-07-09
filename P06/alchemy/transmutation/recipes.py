@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:00:52 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 17:54:45 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 18:44:19 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -17,4 +17,6 @@ from elements import create_fire
 
 
 def lead_to_gold() -> str:
-    return f"Recipe transmuting Lead to Gold: brew '{create_air()}' and '{strength_potion()}' mixed with '{create_fire()}'"
+    return (f"Recipe transmuting Lead to Gold: "
+            f" brew '{create_air()}' and "
+            f"'{strength_potion()}' mixed with '{create_fire()}'")
