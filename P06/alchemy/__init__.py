@@ -7,8 +7,9 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 14:54:51 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 15:27:05 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 15:57:19 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from .elements import create_air
+from .potions import healing_potion as heal

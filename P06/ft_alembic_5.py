@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 14:57:25 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 15:30:45 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 15:49:39 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -15,5 +15,4 @@ from alchemy import create_air
 
 print("=== Alembic 5 ===")
 print("Accessing the alchemy module using 'from alchemy import ...'")
-print("Testing create_air: ", end="")
-create_air()
+print(f"Testing create_air: {create_air()}")
