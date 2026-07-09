@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/29 18:41:26 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 12:56:16 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 13:01:13 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -20,6 +20,7 @@ class DataProcessor(ABC):
         self.data: list[Any] = []
         self.count: int = 0
         self.total: int = 0
+        self.name: str = ""
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -37,9 +38,9 @@ class DataProcessor(ABC):
 
 
 class DataStream():
-    def __init__(self):
-        self.data = []
-        self.processors = []
+    def __init__(self) -> None:
+        self.data: list[Any] = []
+        self.processors: list[Any] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
         self.processors.append(proc)
