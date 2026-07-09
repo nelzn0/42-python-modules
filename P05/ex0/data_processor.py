@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/29 18:21:39 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/30 17:11:08 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/09 11:28:30 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -16,6 +16,9 @@ from abc import ABC, abstractmethod
 
 
 class DataProcessor(ABC):
+    def __init__(self) -> None:
+        self.data: list[Any] = []
+        self.count: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -34,11 +37,15 @@ class DataProcessor(ABC):
 
 class NumericProcessor(DataProcessor):
     def __init__(self) -> None:
+        super().__init__()
         self.data = []
         self.count = 0
 
     def validate(self, data: Any) -> bool:
-        return isinstance(data, (int, float)) or all(isinstance(item, (int, float)) for item in data)
+        return (
+            isinstance(data, (int, float)) or all(
+                isinstance(item, (int, float)) for item in data)
+        )
 
     def ingest(self, data: int | float | list[int | float]) -> None:
         if self.validate(data):
@@ -53,6 +60,7 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
     def __init__(self) -> None:
+        super().__init__()
         self.data = []
         self.count = 0
 
@@ -77,6 +85,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
     def __init__(self) -> None:
+        super().__init__()
         self.data = []
         self.count = 0
 
@@ -92,9 +101,10 @@ class LogProcessor(DataProcessor):
         if self.validate(data):
             if isinstance(data, list):
                 for item in data:
-                    self.data.append((item))
+                    self.data.append(
+                        f"{item['log_level']}: {item['log_message']}")
             else:
-                self.data.append((data))
+                self.data.append(f"{data['log_level']}: {data['log_message']}")
         else:
             raise ValueError("Improper dict data")
 
@@ -108,7 +118,7 @@ if (__name__ == "__main__"):
     number = NumericProcessor()
     print(f" Trying to validate input '42': {number.validate(42)}")
     print(f" Trying to validate input 'Hello': {number.validate('Hello')}")
-    print(f" Test invalid ingestion of string 'foo' without prior validation: ")
+    print(" Test invalid ingestion of string 'foo' without prior validation: ")
     try:
         number.ingest("foo")
     except ValueError as e:
@@ -127,7 +137,7 @@ if (__name__ == "__main__"):
     print(f" Trying to validate input '42': {text.validate(42)}")
     text.ingest(["Hello", "Nexus", "World"])
     print(" Processing data: ['Hello', 'Nexus', 'World']")
-    print(" Extracting 1 values...")
+    print(" Extracting 1 value...")
     rank, out = text.output()
     print(f" Text value {rank}: {out}")
 
@@ -136,10 +146,15 @@ if (__name__ == "__main__"):
     print("Testing Log Processor...")
     log = LogProcessor()
     print(f" Trying to validate input 'Hello': {log.validate('Hello')}")
-    log.ingest([{'log_level': 'NOTICE', 'log_message': 'Connection to server'}, {
-               'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}])
-    print(
-        " Processing data: [{'log_level': 'NOTICE', 'log_message': 'Connection to server'}, {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}]")
+
+    log.ingest([{'log_level': 'NOTICE', 'log_message': 'Connection to server'},
+                {'log_level': 'ERROR', 'log_message':
+                 'Unauthorized access!!'}])
+
+    print(" Processing data: [{'log_level': 'NOTICE', "
+          "'log_message': 'Connection to server'}, "
+          "{'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}]")
+
     print(" Extracting 2 values...")
     for n in range(2):
         rank, entry = log.output()
