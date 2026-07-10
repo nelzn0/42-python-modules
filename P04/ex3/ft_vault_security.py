@@ -7,12 +7,16 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/29 16:09:50 by nda-roch            #+#    #+#            #
-#   Updated: 2026/06/29 18:16:39 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/10 16:21:31 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 
-def secure_archive(name: str, action: str = "r", content: str = "") -> tuple:
+def secure_archive(
+        name: str,
+        action: str = "r",
+        content: str = "") -> tuple[bool, str]:
+
     if (action == "r"):
         try:
             with open(name, action) as file:
