@@ -7,14 +7,15 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 18:48:59 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/10 15:43:57 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/10 16:07:33 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
+from typing import Any
 
 
-def healers(CreatureFactory) -> None:
+def healers(CreatureFactory: Any) -> None:
     base = CreatureFactory.create_base()
 
     print(" base:")
@@ -32,7 +33,7 @@ def healers(CreatureFactory) -> None:
     print(evolve.heal())
 
 
-def transformers(CreatureFactory) -> None:
+def transformers(CreatureFactory: Any) -> None:
     base = CreatureFactory.create_base()
 
     print(" base:")

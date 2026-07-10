@@ -7,14 +7,15 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 18:48:20 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/10 14:48:10 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/10 16:07:11 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from ex0 import AquaFactory, FlameFactory
+from typing import Any
 
 
-def verify(CreatureFactory) -> None:
+def verify(CreatureFactory: Any) -> None:
     base = CreatureFactory.create_base()
 
     print(base.describe())
@@ -26,7 +27,7 @@ def verify(CreatureFactory) -> None:
     print(evolve.attack())
 
 
-def fight(FlameFactory, AquaFactory) -> None:
+def fight(FlameFactory: Any, AquaFactory: Any) -> None:
 
     player1 = FlameFactory.create_base()
     player2 = AquaFactory.create_base()
