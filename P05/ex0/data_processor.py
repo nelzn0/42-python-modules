@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/29 18:21:39 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 11:28:30 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/10 16:29:09 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -97,7 +97,7 @@ class LogProcessor(DataProcessor):
         else:
             return False
 
-    def ingest(self, data: dict | list[dict]) -> None:
+    def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if self.validate(data):
             if isinstance(data, list):
                 for item in data:
