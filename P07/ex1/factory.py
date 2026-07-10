@@ -7,12 +7,13 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/10 11:32:15 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/10 16:03:31 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/10 19:21:54 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from abc import ABC, abstractmethod
-from ex1.creature import Creature, Sproutling, Bloomelle, Shiftling, Morphagon
+from ex1.creature import Sproutling, Bloomelle, Shiftling, Morphagon
+from ex0.creature import Creature
 
 
 class CreatureFactory(ABC):
