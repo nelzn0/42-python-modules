@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/10 11:32:20 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/10 16:03:33 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/14 18:23:53 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -16,18 +16,12 @@ from ex0.creature import Creature
 
 
 class HealCapability(ABC):
-    def __init__(self, name: str) -> None:
-        self.name = name
-
     @abstractmethod
     def heal(self) -> str:
         ...
 
 
 class TransformCapability(ABC):
-    def __init__(self, name: str) -> None:
-        self.name = name
-        self.form = False
 
     @abstractmethod
     def transform(self) -> str:
