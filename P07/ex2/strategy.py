@@ -7,12 +7,13 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/14 12:32:00 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/14 16:11:56 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/14 19:02:01 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from abc import ABC, abstractmethod
-from ex1.creature import Creature, TransformCapability, HealCapability
+from ex1.creature import TransformCapability, HealCapability
+from ex0.creature import Creature
 
 
 class BattleStrategy(ABC):
@@ -26,13 +27,21 @@ class BattleStrategy(ABC):
         pass
 
 
+class BattleError(Exception):
+    pass
+
+
 class NormalStrategy(BattleStrategy):
 
     def is_valid(self, creature: Creature) -> bool:
         return isinstance(creature, Creature)
 
     def act(self, creature: Creature) -> str:
-        return creature.attack()
+        if self.is_valid(creature):
+            return creature.attack()
+        else:
+            raise BattleError(
+                f"Invalid Creature '{creature.name}' for this normal strategy")
 
 
 class AggressiveStrategy(BattleStrategy):
@@ -41,9 +50,14 @@ class AggressiveStrategy(BattleStrategy):
         return isinstance(creature, TransformCapability)
 
     def act(self, creature: Creature) -> str:
-        actions = (creature.transform(), creature.attack(), creature.revert())
-        output = "\n".join(actions)
-        return output
+        if self.is_valid(creature):
+            actions = (creature.transform(),
+                       creature.attack(), creature.revert())
+            output = "\n".join(actions)
+            return output
+        else:
+            raise BattleError(
+                f"Invalid Creature '{creature.name}' for this aggressive strategy")
 
 
 class DefensiveStrategy(BattleStrategy):
@@ -52,6 +66,10 @@ class DefensiveStrategy(BattleStrategy):
         return isinstance(creature, HealCapability)
 
     def act(self, creature: Creature) -> str:
-        actions = (creature.attack(), creature.heal())
-        output = "\n".join(actions)
-        return output
+        if self.is_valid(creature):
+            actions = (creature.attack(), creature.heal())
+            output = "\n".join(actions)
+            return output
+        else:
+            raise BattleError(
+                f"Invalid Creature '{creature.name}' for this defensive strategy")

@@ -7,31 +7,65 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 18:48:56 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/14 18:06:06 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/14 19:01:59 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from ex2 import HealCapability, HealingCreatureFactory, TransformCreatureFactory
-from ex2.strategy import NormalStrategy
+from ex2.strategy import NormalStrategy, BattleStrategy, DefensiveStrategy, AggressiveStrategy, BattleError
+from ex0.factory import CreatureFactory, FlameFactory, AquaFactory
 from typing import Any
 
 
 def battle(opps: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
 
-    print("* Battle *")
+    print("*** Tournament ***")
 
-    for n in opps:
-        
-    print(op1.describe())
+    print(f"{len(opps)} opponents involved")
+
+    print("")
+
+    for n in range(0, len(opps) - 1):
+        for m in range(n + 1, len(opps)):
+            opp_1 = opps[n]
+            opp_2 = opps[m]
+            factory_1, strategy_1 = opp_1
+            factory_2, strategy_2 = opp_2
+            creature_1 = factory_1.create_base()
+            creature_2 = factory_2.create_base()
+
+            print("* Battle *")
+
+            print(creature_1.describe())
+            print("vs.")
+            print(creature_2.describe())
+            print("now fight!")
+
+            try:
+                print(strategy_1.act(creature_1))
+                print(strategy_2.act(creature_2))
+            except BattleError as e:
+                print(f"Battle error, aborting tournament: {e}")
+
+            print("")
 
 
 if (__name__ == "__main__"):
 
-    flame = FlameFactory
-
     print("Tournament 0 (basic)")
     print("[ (Flameling+Normal), (Healing+Defensive) ]")
-    print("*** Tournament ***")
-    print("2 opponents involved")
 
-    battle([flame, NormalStrategy])
+    battle([(FlameFactory(), NormalStrategy()),
+           (HealingCreatureFactory(), DefensiveStrategy())])
+
+    print("Tournament 1 (error)")
+    print("[ (Flameling+Agressive), (Healing+Defensive) ]")
+
+    battle([(FlameFactory(), AggressiveStrategy()),
+           (HealingCreatureFactory(), DefensiveStrategy())])
+
+    print("Tournament 2 (multiple)")
+    print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive ]")
+
+    battle([(AquaFactory(), NormalStrategy()),
+           (HealingCreatureFactory(), DefensiveStrategy()), (TransformCreatureFactory(), AggressiveStrategy())])
