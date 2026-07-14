@@ -7,14 +7,14 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 18:48:56 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/14 19:01:59 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/14 19:12:01 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
-from ex2 import HealCapability, HealingCreatureFactory, TransformCreatureFactory
-from ex2.strategy import NormalStrategy, BattleStrategy, DefensiveStrategy, AggressiveStrategy, BattleError
+from ex2 import HealingCreatureFactory, TransformCreatureFactory
+from ex2.strategy import (NormalStrategy, BattleStrategy,
+                          DefensiveStrategy, AggressiveStrategy, BattleError)
 from ex0.factory import CreatureFactory, FlameFactory, AquaFactory
-from typing import Any
 
 
 def battle(opps: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
@@ -37,9 +37,9 @@ def battle(opps: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
             print("* Battle *")
 
             print(creature_1.describe())
-            print("vs.")
+            print(" vs.")
             print(creature_2.describe())
-            print("now fight!")
+            print(" now fight!")
 
             try:
                 print(strategy_1.act(creature_1))
@@ -59,7 +59,7 @@ if (__name__ == "__main__"):
            (HealingCreatureFactory(), DefensiveStrategy())])
 
     print("Tournament 1 (error)")
-    print("[ (Flameling+Agressive), (Healing+Defensive) ]")
+    print("[ (Flameling+Aggressive), (Healing+Defensive) ]")
 
     battle([(FlameFactory(), AggressiveStrategy()),
            (HealingCreatureFactory(), DefensiveStrategy())])
@@ -68,4 +68,5 @@ if (__name__ == "__main__"):
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive ]")
 
     battle([(AquaFactory(), NormalStrategy()),
-           (HealingCreatureFactory(), DefensiveStrategy()), (TransformCreatureFactory(), AggressiveStrategy())])
+            (HealingCreatureFactory(), DefensiveStrategy()),
+            (TransformCreatureFactory(), AggressiveStrategy())])

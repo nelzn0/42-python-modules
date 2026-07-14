@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/14 12:32:00 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/14 19:02:01 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/14 19:28:48 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -50,14 +50,14 @@ class AggressiveStrategy(BattleStrategy):
         return isinstance(creature, TransformCapability)
 
     def act(self, creature: Creature) -> str:
-        if self.is_valid(creature):
+        if isinstance(creature, TransformCapability):
             actions = (creature.transform(),
                        creature.attack(), creature.revert())
             output = "\n".join(actions)
             return output
         else:
-            raise BattleError(
-                f"Invalid Creature '{creature.name}' for this aggressive strategy")
+            raise BattleError(f"Invalid Creature '{creature.name}' "
+                              f" for this aggressive strategy")
 
 
 class DefensiveStrategy(BattleStrategy):
@@ -66,10 +66,11 @@ class DefensiveStrategy(BattleStrategy):
         return isinstance(creature, HealCapability)
 
     def act(self, creature: Creature) -> str:
-        if self.is_valid(creature):
+        if isinstance(creature, HealCapability):
             actions = (creature.attack(), creature.heal())
             output = "\n".join(actions)
             return output
         else:
             raise BattleError(
-                f"Invalid Creature '{creature.name}' for this defensive strategy")
+                f"Invalid Creature '{creature.name}' "
+                f" for this defensive strategy")
