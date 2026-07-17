@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 14:59:30 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 16:28:30 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/17 18:53:57 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -15,4 +15,4 @@ import alchemy
 
 print("=== Transmutation 2 ===")
 print("Import alchemy module only")
-print(f"Testing lead to gold: {alchemy.lead_to_gold()}")
+print(f"Testing lead to gold: {alchemy.transmutation.recipes.lead_to_gold()}")
