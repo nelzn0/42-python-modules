@@ -7,9 +7,11 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:03:07 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 18:32:35 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:21:51 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
+
+__all__ = ["validate_ingredients"]
 
 
 def validate_ingredients(ingredients: str) -> str:

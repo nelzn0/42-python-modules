@@ -7,11 +7,16 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:02:58 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 18:29:21 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:22:39 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from alchemy.grimoire.light_validator import validate_ingredients
+
+__all__ = [
+    "light_spell_allowed_ingredients",
+    "light_spell_record"
+]
 
 
 def light_spell_allowed_ingredients() -> list[str]:

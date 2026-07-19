@@ -7,11 +7,16 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:02:36 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 18:40:07 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:24:56 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from alchemy.grimoire.dark_validator import validate_dark_ingredients
+
+__all__ = [
+    "dark_spell_allowed_ingredients",
+    "dark_spell_record"
+]
 
 
 def dark_spell_allowed_ingredients() -> list[str]:

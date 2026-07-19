@@ -7,12 +7,13 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 14:59:10 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/17 18:52:54 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:19:55 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 import alchemy.transmutation
 
-print("=== Transmutation 1 ===")
-print("Import transmutation module directly")
-print(f"Testing lead to gold: {alchemy.transmutation.recipes.lead_to_gold()}")
+if (__name__ == "__main__"):
+    print("=== Transmutation 1 ===")
+    print("Import transmutation module directly")
+    print(f"Testing lead to gold: {alchemy.transmutation.lead_to_gold()}")

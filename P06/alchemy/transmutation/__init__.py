@@ -7,10 +7,10 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:00:27 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/17 18:50:55 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:04:11 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
-from alchemy.transmutation import recipes
+from alchemy.transmutation.recipes import lead_to_gold
 
-__all__ = ["recipes"]
+__all__ = ["lead_to_gold"]

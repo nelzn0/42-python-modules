@@ -7,12 +7,14 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:00:03 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 17:54:58 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:02:30 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from alchemy.elements import create_air, create_earth
 from elements import create_fire, create_water
+
+__all__ = ["healing_potion", "strength_potion"]
 
 
 def healing_potion() -> str:

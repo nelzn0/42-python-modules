@@ -7,13 +7,15 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 15:00:52 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/17 19:14:00 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 15:05:24 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from alchemy.potions import strength_potion
 from ..elements import create_air
 from elements import create_fire
+
+__all__ = ["lead_to_gold"]
 
 
 def lead_to_gold() -> str:

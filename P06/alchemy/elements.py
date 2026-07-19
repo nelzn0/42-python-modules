@@ -7,9 +7,12 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/09 14:53:51 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/09 15:46:58 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 14:54:58 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
+
+__all__ = ["create_earth", "create_air"]
+
 
 def create_earth() -> str:
     return "Earth element created"
