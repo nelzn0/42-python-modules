@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/19 16:47:04 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/19 18:38:02 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/19 18:48:36 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -15,6 +15,7 @@ import importlib
 import pandas
 import numpy
 import matplotlib.pyplot as plt
+import sys
 
 
 def check_package(name: str) -> tuple[bool, str]:
@@ -54,6 +55,13 @@ def main() -> None:
     if not all_ok:
         print("MISSING PACKAGES, CANNOT PROCEED")
         return
+
+    if "poetry" in sys.executable:
+        print("Installed with poetry")
+    else:
+        print("Installed with pip")
+
+    print("")
 
     print("Analyzing Matrix data...")
 
