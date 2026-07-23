@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 14:38:37 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/23 15:23:21 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/23 15:27:23 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -41,7 +41,10 @@ def main() -> None:
             missing.append(key)
             print(f"{label}: [MISSING]")
         else:
-            if key == "MATRIX_MODE" and val not in ("development", "production"):
+            if (
+                key == "MATRIX_MODE"
+                and val not in ("development", "production")
+            ):
                 missing.append(
                     f"{key} (must be 'development' or 'production')")
                 val = f"[INVALID MODE : {val}]"
