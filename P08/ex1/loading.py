@@ -7,14 +7,11 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/19 16:47:04 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/19 18:49:39 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/23 14:15:10 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 import importlib
-import pandas
-import numpy
-import matplotlib.pyplot as plt
 import sys
 
 
@@ -45,18 +42,22 @@ def main() -> None:
             print(f"[OK] {name} ({version}) - {description}")
         else:
             all_ok = False
-            print(f"[KO] {name} {version}, run:")
-            print(f" pip install {name}")
-            print(" or")
-            print(" poetry install")
+            print(f"[KO] {name} {version}")
 
     print("")
 
     if not all_ok:
         print("MISSING PACKAGES, CANNOT PROCEED")
+        print(f"To install using pip: pip install -r requirements.txt")
+        print(" or")
+        print("To install using Poetry: poetry install")
         return
 
-    if "poetry" in sys.executable:
+    import pandas
+    import numpy
+    import matplotlib.pyplot as plt
+
+    if "poetry" in sys.prefix.lower() or "pypoetry" in sys.prefix.lower():
         print("Installed with poetry")
     else:
         print("Installed with pip")
