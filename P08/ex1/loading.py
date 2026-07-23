@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/19 16:47:04 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/23 14:15:10 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/23 14:28:58 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -48,7 +48,7 @@ def main() -> None:
 
     if not all_ok:
         print("MISSING PACKAGES, CANNOT PROCEED")
-        print(f"To install using pip: pip install -r requirements.txt")
+        print("To install using pip: pip install -r requirements.txt")
         print(" or")
         print("To install using Poetry: poetry install")
         return
