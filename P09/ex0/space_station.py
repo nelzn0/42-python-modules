@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 15:32:24 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/23 16:19:24 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/23 16:41:01 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -53,8 +53,8 @@ def main() -> None:
     print(f"ID: {station.station_id}")
     print(f"Name: {station.name}")
     print(f"Crew: {station.crew_size}")
-    print(f"Power: {station.power_level}")
-    print(f"Oxygen: {station.oxygen_level}")
+    print(f"Power: {station.power_level}%")
+    print(f"Oxygen: {station.oxygen_level}%")
     if station.is_operational:
         print("Status: Operational")
     else:
