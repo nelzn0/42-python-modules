@@ -7,15 +7,22 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 15:32:24 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/23 16:08:39 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/07/23 16:19:24 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
+
+"""Exercise 0: Space Station Data Validation.
+
+Basic Pydantic model creation, field limits validation and exception handling.
+"""
 
 from pydantic import BaseModel, Field, ValidationError
 from datetime import datetime
 
 
 class SpaceStation(BaseModel):
+    """Pydantic model representing the data of a Space Station"""
+
     station_id: str = Field(min_length=3, max_length=10)
     name: str = Field(min_length=1, max_length=50)
     crew_size: int = Field(ge=1, le=20)
@@ -27,9 +34,12 @@ class SpaceStation(BaseModel):
 
 
 def main() -> None:
+    """Valid and Invalid model creation, with error handling"""
+
     print("Space Station Data Validation")
     print("========================================")
 
+    # Creating a valid space station instance
     station = SpaceStation(
         station_id="ISS001",
         name="Internation Space Station",
@@ -53,6 +63,8 @@ def main() -> None:
     print("")
     print("========================================")
     print("Expected validation error:")
+
+    # Trying to create an invalid station instance (crew_size > 20)
     try:
         SpaceStation(
             station_id="ISS001",
@@ -62,6 +74,7 @@ def main() -> None:
             oxygen_level=92.3,
             last_maintenance=datetime.now()
         )
+    # Catch validation error
     except ValidationError as e:
         print(e)
 
