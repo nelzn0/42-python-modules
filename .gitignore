@@ -8,3 +8,8 @@ __pycache__
 matrix_analysis.png
 poetry.lock
 matrix_env/
+
+# mac stuff
+
+.DS_Store
+**./.DS_Store
