@@ -13,3 +13,6 @@ matrix_env/
 
 .DS_Store
 **./.DS_Store
+
+# P10
+data_generator.py
