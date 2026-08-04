@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 18:00:17 by nda-roch            #+#    #+#            #
-#   Updated: 2026/08/03 20:14:00 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/08/04 12:49:44 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -35,7 +35,7 @@ def spell_reducer(spells: list[int], operation: str) -> int:
         return result
 
 
-def base_enchantment(power: int, element: str, target: str) -> str:
+def enchant(power: int, element: str, target: str) -> str:
     return f"{target} got {power} damage with {element}"
 
 
@@ -77,15 +77,14 @@ def main() -> None:
 
     # Ancient Library Test Data
     spell_powers = [49, 43, 37, 34, 27, 11]
-    operations = ['add', 'multiply', 'max', 'min']
-    fibonacci_tests = [13, 12, 12]
+    operations_names = ['add', 'multiply', 'max', 'min']
 
     print("")
     print("Testing spell reducer...")
 
-    add_result = spell_reducer(spell_powers, operations[0])
-    product = spell_reducer(spell_powers, operations[1])
-    max_result = spell_reducer(spell_powers, operations[2])
+    add_result = spell_reducer(spell_powers, operations_names[0])
+    product = spell_reducer(spell_powers, operations_names[1])
+    max_result = spell_reducer(spell_powers, operations_names[2])
 
     print(f"Sum: {add_result}")
     print(f"Product: {product}")
@@ -103,6 +102,18 @@ def main() -> None:
     print("")
 
     print("Testing spell dispatcher...")
+    cast = spell_dispatcher()
+    print(cast(42))
+    print(cast("fire"))
+    print(cast(["fire", "light", "swag"]))
+    print(cast(42.9))
+
+    print("")
+    print("Testing partial enchanter...")
+    enchantment = partial_enchanter(enchant)
+    print(enchantment['fire'](target="Sword"))
+    print(enchantment['ice'](target="Pickaxe"))
+    print(enchantment['light'](target="Shovel"))
 
 
 if __name__ == "__main__":
