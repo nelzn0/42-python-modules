@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 18:00:17 by nda-roch            #+#    #+#            #
-#   Updated: 2026/08/04 12:49:44 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/08/04 15:46:23 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -19,7 +19,7 @@ from typing import Any
 
 def spell_reducer(spells: list[int], operation: str) -> int:
 
-    operations = {
+    operations: dict[str, Callable[[int, int], int]] = {
         "add": add,
         "multiply": mul,
         "max": max,

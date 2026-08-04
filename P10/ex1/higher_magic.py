@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 17:59:38 by nda-roch            #+#    #+#            #
-#   Updated: 2026/07/26 17:14:56 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/08/04 15:35:10 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -82,15 +82,15 @@ def main() -> None:
     combo_spell = spell_combiner(heal, cleanse)
     print()
 
-    print(
-        f"Combined spell result: {combo_spell(test_targets[0], test_values[0])}")
+    print(f"Combined spell result: "
+          f"{combo_spell(test_targets[0], test_values[0])}")
 
     print()
     print("Testing power amplifier...")
     amp = power_amplifier(fireball, 5)
     print()
-    print(
-        f"Fireball (19) multiplied by 5! {amp(test_targets[1], test_values[1])}")
+    print(f"Fireball (19) multiplied by 5! "
+          f"{amp(test_targets[1], test_values[1])}")
     print()
     print("Testing condition cast...")
     con = conditional_caster(power_greater_than(30), lightning_bolt)
