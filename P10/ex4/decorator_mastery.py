@@ -7,7 +7,7 @@
 #   By: nda-roch <nda-roch@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/07/23 18:00:14 by nda-roch            #+#    #+#            #
-#   Updated: 2026/08/04 15:46:25 by nda-roch           ###   ########.fr      #
+#   Updated: 2026/08/04 15:54:11 by nda-roch           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -26,7 +26,7 @@ def lightning_bolt(target: str, power: int) -> str:
 
 
 def cursed_spell(target: str, power: int) -> str:
-    raise ValueError("boom!")
+    raise ValueError("Waaaaaaagh spelled !")
 
 
 def spell_timer(func: Callable) -> Callable:
@@ -62,10 +62,11 @@ def retry_spell(max_attempts: int) -> Callable:
                 try:
                     return func(*args, **kwargs)
                 except Exception:
+                    if attempt == max_attempts:
+                        return (f"Spell casting failed "
+                                f"after {max_attempts} attempts")
                     print(f"Spell failed, retrying... "
                           f"(attempt {attempt}/{max_attempts})")
-            return (f"Spell casting failed "
-                    f"after {max_attempts} attempts")
         return wrapper
     return decorator
 
